@@ -1,0 +1,56 @@
+buildscript {
+    /*build.gradle 전역변수 선언*/
+    ext {
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+/*자바와 스프링부트를 사용하기 위한 필수 플러그인*/
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+//spring-boot의 의존성을 관리하는 plugin
+apply plugin: 'io.spring.dependency-management'
+//-----------------------------------------
+
+group 'com.jojoldu.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    /*compile('org.springframework.boot:spring-boot-starter-web')*/
+    /*gradle 버젼 차이로 인해 compile -> implementation으로 변경*/
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+/*plugins {
+    id 'java'
+}
+
+group 'com.jojoldu.book'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+}
+
+test {
+    useJUnitPlatform()
+}*/
