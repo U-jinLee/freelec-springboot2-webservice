@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 @Getter
 @NoArgsConstructor/*기본 생성자 자동 추가*/
@@ -26,6 +27,11 @@ public class Posts {
         this.title = title;
         this.content = content;
         this.author = author;
+    }
+    @Transactional
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
 }
